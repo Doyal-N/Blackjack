@@ -1,0 +1,3 @@
+class Diler < User
+  
+end
