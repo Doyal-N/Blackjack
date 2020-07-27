@@ -1,5 +1,3 @@
-require_relative 'card'
-
 class DeckOfCards
   
   attr_reader :deck
