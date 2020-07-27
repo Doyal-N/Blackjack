@@ -6,6 +6,9 @@ class Diler < User
     super
   end  
 
+  def game_options
+  end 
+
   def can_pass?(score)
     score >= PASS
   end  
