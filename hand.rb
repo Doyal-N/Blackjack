@@ -4,8 +4,8 @@ class Hand
     @cards = shoe.cards    
   end
 
-  def deal_cards(count = 2)
-    @cards.sample(count).each { |card| @cards.delete card }
+  def deal_cards(card = 2)
+    @cards.sample(card).each { |card| @cards.delete card }
   end
 
   def deal_card

@@ -1,10 +1,10 @@
 class User
 
-  attr_reader :balance
-
   START_BANK = 100
   BET = 10
   MAX_CARD = 3
+
+  attr_reader :balance
 
   def initialize(name)
     @name = name
@@ -59,6 +59,9 @@ class User
 
   def stop_layout
     @cards = []
+    @take_a_card = false
+    @pass = false
+    @open_the_cards = false
   end  
 
   #методы-предикаты
@@ -73,8 +76,4 @@ class User
   def open_cards?(user_choice)
     user_choice == 'о'
   end
-  
-  
-
-
 end

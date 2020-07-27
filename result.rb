@@ -34,7 +34,7 @@ class Result < Hand
   end
 
   def tie?(player_score, diler_score)
-    player_score == dealer_score
+    player_score == diler_score
   end
 
   def win?(score)
