@@ -16,6 +16,5 @@ class DeckOfCards
         deck << Card.new(suit, sign)  
       end 
     end
-    deck.shuffle  
   end
 end

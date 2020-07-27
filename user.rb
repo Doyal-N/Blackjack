@@ -58,7 +58,7 @@ class User
   end   
 
   def stop_layout
-    @card = []
+    @cards = []
   end  
 
   #методы-предикаты
