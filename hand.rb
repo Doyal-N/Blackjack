@@ -12,6 +12,4 @@ class Hand
     deal_cards(1)
   end  
 
-
-
 end
