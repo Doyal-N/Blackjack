@@ -6,7 +6,13 @@ class Diler < User
     super
   end  
 
-  def game_options
+  def game_options(result)
+    if take_card?(result.score(@cards)) 
+      taken_card(result.deal_card)
+    elsif can_pass?(result.score(@cards))
+      miss_a_turn  
+    else 
+      open_cards 
   end 
 
   def can_pass?(score)
