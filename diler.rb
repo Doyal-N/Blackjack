@@ -13,6 +13,7 @@ class Diler < User
       miss_a_turn  
     else 
       open_cards 
+    end  
   end 
 
   def can_pass?(score)

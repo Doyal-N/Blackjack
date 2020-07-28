@@ -4,7 +4,7 @@ class User
   BET = 10
   MAX_CARD = 3
 
-  attr_reader :balance, :name
+  attr_reader :balance, :name, :cards
   attr_accessor :take_a_card, :pass, :open_the_cards
 
   def initialize(name)
@@ -38,7 +38,7 @@ class User
   end
 
   def take_card(card)
-    @cards << card if take_card?
+    @cards.concat(card) if take_card?
   end
 
   def get_money(amount)
