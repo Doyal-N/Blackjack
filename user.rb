@@ -38,7 +38,7 @@ class User
   end
 
   def take_card(card)
-    @cards.concat(card) if take_card?
+    @cards.concat(card) if take_cards?
   end
 
   def get_money(amount)
@@ -52,6 +52,7 @@ class User
 
   def show_cardback
     @cards.each { print('  ', '†') }
+    puts
     GameMessages.message('Карты скрыты')
   end
 
@@ -71,7 +72,7 @@ class User
     @cards.length == MAX_CARD
   end  
 
-  def take_card?
+  def take_cards?
     @cards.length < MAX_CARD
   end  
 

@@ -9,7 +9,6 @@ class Shoe
   end    
 
   def mix_cards
-    cards = []
-    cards << @deck.shuffle
+    @deck.shuffle
   end
 end

@@ -1,3 +1,4 @@
+require_relative 'card'
 class DeckOfCards
 
   SIGNS = %w(2 3 4 5 6 7 8 9 10 J Q K A)
@@ -16,5 +17,6 @@ class DeckOfCards
         deck << Card.new(suit, sign)  
       end 
     end
+    deck
   end
 end

@@ -5,25 +5,26 @@ module GameInterface
 
   def get_name
     puts 'Введите имя '
-    @name = get_user_data
+    name = get_user_data
   end
 
-  def ask_user(user)
-    puts 'Что вы хотите?'
-    puts "Введите 'п' - пропустить ход." if user.pass
-    puts "Введите 'в' - взять карту." if user.take_a_card
-    puts "Введите 'о' - открыть карты."
-    puts "Введите 'выход' для выхода."
-  end
-  
   def user_choice(user)
     ask_user(user)
     choice = get_user_data
     exit if choice == 'выход'
+    choice
   end
 
+  def ask_user(user)
+    puts 'Что вы хотите?'
+    puts "Введите 'п' - пропустить ход." unless user.pass
+    puts "Введите 'в' - взять карту." unless user.take_a_card
+    puts "Введите 'о' - открыть карты."
+    puts "Введите 'выход' для выхода."
+  end
+  
   def hi_player(name)
-    GameMessages.message("Привет, #{@name}. Начнем игру!")
+    GameMessages.message("Привет, #{name}. Начнем игру!")
   end
 
   def choice_open_cards

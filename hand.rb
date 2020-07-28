@@ -1,4 +1,5 @@
 class Hand
+   
   def initialize
     shoe = Shoe.new
     @cards = shoe.cards    

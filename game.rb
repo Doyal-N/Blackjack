@@ -5,13 +5,10 @@ class Game
 
   def initialize
     @gambler = Player.new(get_name)
+    hi_player(@gambler.name)
     @casino = Diler.new
-    @bank = 0
-    @game_end = false
-    @result = Result.new
-    hi_player(@get_name)
     start_game_info
-    while (choice = get_user_data)
+    while choice = get_user_data
       play(choice)      
     end
   end
@@ -28,6 +25,9 @@ class Game
   
   def start
     choice_new_game
+    @bank = 0
+    @game_end = false
+    @result = Result.new
     place_bets
     hand_card
     process 
