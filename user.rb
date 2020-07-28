@@ -20,12 +20,12 @@ class User
   end
 
   def miss_a_turn
-    GameMessages.message("#{@name} пропускает ход")
+    GameMessages.message('Игрок пропускает ход')
     self.pass = true
   end
 
   def taken_card(card)
-    GameMessages.message("#{@name} взял карту")
+    GameMessages.message('Игрок взял карту')
     take_card(card)
     self.take_a_card = true
   end
