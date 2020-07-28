@@ -25,7 +25,18 @@ class Game
   end
   
   def start
-  
+    choice_new_game
+    place_bets
+    hand_card
+
   end  
 
+  def place_bets
+    self.bank = @gambler.place_bet + @casino.place_bet
+  end
+
+  def hand_card
+    @gambler.take_card(@result.deal_cards)
+    @casino.take_card(@result.deal_cards)
+  end
 end

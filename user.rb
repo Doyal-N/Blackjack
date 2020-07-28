@@ -4,7 +4,8 @@ class User
   BET = 10
   MAX_CARD = 3
 
-  attr_reader :balance
+  attr_reader :balance, :name
+  attr_accessor :take_a_card, :pass, :open_the_cards
 
   def initialize(name)
     @name = name
@@ -17,6 +18,7 @@ class User
 
   def place_bet
     @balance -= BET
+    BET
   end
 
   def miss_a_turn
