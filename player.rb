@@ -11,10 +11,10 @@ class Player < User
   end  
   
   def can_pass?(user_choice)
-    user_choice == 'п'
+    user_choice == 'п' && !@pass
   end  
   
   def take_card?(user_choice)
-    user_choice == 'в'
+    user_choice == 'в' && !@take_a_card
   end
 end

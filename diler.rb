@@ -16,11 +16,11 @@ class Diler < User
   end 
 
   def can_pass?(score)
-    score >= PASS
+    score >= PASS && !@pass
   end  
   
   def take_card?(score)
-    score < PASS
+    score < PASS && !@take_a_card
   end
 
 end

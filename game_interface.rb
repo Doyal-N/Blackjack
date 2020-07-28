@@ -6,7 +6,7 @@ module GameInterface
   def get_name
     puts 'Введите имя '
     name = get_user_data
-    raise 'Как к вам обрашаться?' if name = ''
+    raise 'Как к вам обрашаться?' if name == ''
     name
     error = 3
   rescue RuntimeError

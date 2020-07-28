@@ -1,11 +1,13 @@
 class Game
   include GameInterface 
 
+  attr_accessor :bank, :game_end
+
   def initialize
     @gambler = Player.new(get_name)
     @casino = Diler.new
     @bank = 0
-    @game_over = false
+    @game_end = false
     @result = Result.new
     hi_player(@get_name)
     start_game_info
@@ -39,4 +41,14 @@ class Game
     @gambler.take_card(@result.deal_cards)
     @casino.take_card(@result.deal_cards)
   end
+
+  def player_turn
+    @gambler.game_options(user_choice(@gambler), @result)
+    self.game_end = @gambler.open_the_cards
+  end 
+  
+  def casino_move
+    
+  end
+
 end
