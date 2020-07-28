@@ -30,7 +30,7 @@ class Game
     choice_new_game
     place_bets
     hand_card
-
+    process 
   end  
 
   def place_bets
@@ -48,7 +48,28 @@ class Game
   end 
   
   def casino_move
-    
+    @casino.game_options(@result)
+    self.game_end = @casino.open_the_cards
   end
+
+  def process
+    while @game_end != false
+      player_turn
+      break if @game_end || cards_none?
+      casino_move
+      stop_play if cards_none?
+    end
+  end
+
+  def stop_play
+    self.game_over = true
+  end
+
+  def impossible_game?
+    @gambler.balance.zero? || @casino.balance.zero?
+  end  
+
+  def cards_none?
+    @gambler.card_count? && @casino.card_count? 
 
 end
