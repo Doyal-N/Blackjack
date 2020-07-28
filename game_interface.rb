@@ -25,7 +25,7 @@ module GameInterface
   end
   
   def hi_player(name)
-    GameMessages.message("Привет, #{name}. Начнем игру!")
+    GameMessages.frame("Привет, #{name}. Начнем игру!")
   end
 
   def choice_open_cards
@@ -35,6 +35,10 @@ module GameInterface
   def choice_new_game
     GameMessages.message('Новая игра...')
   end
+
+  def hello
+    GameMessages.frame('Приветсвуем в казино!')
+  end  
   
   def tie
     GameMessages.message('Ничья')

@@ -2,6 +2,7 @@ class Game
   include GameInterface 
 
   def initialize
+    hello
     @gambler = Player.new(get_name)
     hi_player(@gambler.name)
     @casino = Diler.new

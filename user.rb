@@ -53,11 +53,13 @@ class User
   def show_cardback
     @cards.each { print('  ', '†') }
     puts
-    GameMessages.message('Карты соперника скрыты')
+    puts
   end
 
   def show_cardface 
     @cards.each { |card| print('  ', "#{card.sign}#{card.suit}") }
+    puts
+    puts
   end   
 
   def stop_layout
