@@ -1,5 +1,6 @@
 module GameInterface
   def get_user_data
+    STDOUT.write 'Ваш текст >>> '
     gets.strip
   end
 

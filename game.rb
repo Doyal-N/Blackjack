@@ -1,8 +1,6 @@
 class Game
   include GameInterface 
 
-  attr_accessor :bank, :game_end
-
   def initialize
     @gambler = Player.new(get_name)
     hi_player(@gambler.name)
@@ -12,6 +10,8 @@ class Game
       play(choice)      
     end
   end
+
+  attr_accessor :bank, :game_end
 
   def play(choice)
     if choice == 'с'
@@ -35,7 +35,8 @@ class Game
   end  
 
   def place_bets
-    self.bank = @gambler.place_bet + @casino.place_bet
+    self.bank += @gambler.place_bet 
+    self.bank += @casino.place_bet
   end
 
   def hand_card
@@ -44,6 +45,7 @@ class Game
   end
 
   def player_turn
+    info
     @gambler.game_options(user_choice(@gambler), @result)
     self.game_end = @gambler.open_the_cards
   end 
@@ -54,7 +56,7 @@ class Game
   end
 
   def process
-    while @game_end != false
+    until @game_end
       player_turn
       break if @game_end || cards_none?
       casino_move
@@ -76,7 +78,7 @@ class Game
 
   def stop_play
     info
-    self.game_over = true
+    self.game_end = true
   end
 
   def impossible_game?
@@ -118,8 +120,8 @@ class Game
   end
 
   def victory
-    player = @result.score(@casino.cards)
-    diler = @result.score(@gambler.cards)
+    player = @result.score(@gambler.cards)
+    diler = @result.score(@casino.cards)
     if @result.tie?(player, diler)
       tie
       pick_up_money_tie(@bank / 2)
