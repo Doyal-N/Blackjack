@@ -47,18 +47,18 @@ class User
 
   def user_win(bank)
     get_money(bank)
-    GameMessages.message("#{@name} победил")
+    GameMessages.frame("#{@name} победил")
   end  
 
   def show_cardback
-    @cards.each { print('  ', '†') }
     puts
+    @cards.each { print('  ', '†') }
     puts
   end
 
   def show_cardface 
-    @cards.each { |card| print('  ', "#{card.sign}#{card.suit}") }
     puts
+    @cards.each { |card| print('  ', "#{card.sign}#{card.suit}") }
     puts
   end   
 

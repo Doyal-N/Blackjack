@@ -105,8 +105,10 @@ class Game
   end  
 
   def know_balance
+    GameMessages.frame('БАНК')
     puts "Баланс игрока -  #{@gambler.balance}"
-    puts "Деньги крупье - #{@casino.balance}"      
+    puts "Деньги крупье - #{@casino.balance}"     
+    puts
   end
 
   def info

@@ -29,11 +29,11 @@ module GameInterface
   end
 
   def choice_open_cards
-    GameMessages.message('Открыты только ваши карты...')
+    GameMessages.message('Открываем...')
   end
 
   def choice_new_game
-    GameMessages.message('Новая игра...')
+    GameMessages.frame('Новая игра...')
   end
 
   def hello

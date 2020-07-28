@@ -7,12 +7,12 @@ class Result < Hand
 
   def score(cards)
     total= 0
-    ace = 0
+    num = 0
     cards.each do |card|
-      ace += ACE if card.sign == 'A'
+      num += ACE if card.sign == 'A'
       total += get_basic_score(card)
     end
-    add_ace(total, ace)
+    add_ace(total, num)
   end
 
   def get_basic_score(card)
@@ -25,10 +25,10 @@ class Result < Hand
     end
   end
 
-  def add_ace(total, ace)
-    ace.times do
+  def add_ace(total, num)
+    num.times do
       ace = ACE_2 - ACE
-      total += ace if total + ace <= WIN
+      total += ace if total + ace <= WIN + 5
     end
     total
   end
