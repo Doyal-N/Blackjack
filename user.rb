@@ -53,7 +53,7 @@ class User
   def show_cardback
     @cards.each { print('  ', '†') }
     puts
-    GameMessages.message('Карты скрыты')
+    GameMessages.message('Карты соперника скрыты')
   end
 
   def show_cardface 

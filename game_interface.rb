@@ -28,7 +28,7 @@ module GameInterface
   end
 
   def choice_open_cards
-    GameMessages.message('Открываем карты...')
+    GameMessages.message('Открыты только ваши карты...')
   end
 
   def choice_new_game
@@ -40,6 +40,7 @@ module GameInterface
   end
 
   def show_score(name, score)
+    puts
     puts "#{name}: #{score}"
   end
 

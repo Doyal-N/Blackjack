@@ -120,10 +120,10 @@ class Game
   def victory
     player = @result.score(@casino.cards)
     diler = @result.score(@gambler.cards)
-    if tie?(player, diler)
+    if @result.tie?(player, diler)
       tie
       pick_up_money_tie(@bank / 2)
-    elsif player_win?(player, diler)  
+    elsif @result.player_win?(player, diler)  
       @gambler.user_win(@bank)
     else
       @casino.user_win(@bank) 

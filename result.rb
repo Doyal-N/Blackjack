@@ -18,7 +18,7 @@ class Result < Hand
   def get_basic_score(card)
     if ['J', 'Q', 'K'].include? card.sign
       BASIC
-    elsif card.value == 'A'
+    elsif card.sign == 'A'
       ACE
     else
       card.sign.to_i
