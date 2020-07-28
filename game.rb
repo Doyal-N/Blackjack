@@ -31,6 +31,7 @@ class Game
     place_bets
     hand_card
     process 
+    husking
   end  
 
   def place_bets
@@ -61,7 +62,20 @@ class Game
     end
   end
 
+  def husking
+    choice_open_cards
+    info
+    victory
+    bank_zero
+    card_zero
+    know_balance
+    self.game_end = true
+    exit if impossible_game?
+    start_game_info
+  end  
+
   def stop_play
+    info
     self.game_over = true
   end
 
@@ -70,6 +84,49 @@ class Game
   end  
 
   def cards_none?
-    @gambler.card_count? && @casino.card_count? 
+    @gambler.card_count? && @casino.card_count?
+  end   
 
+  def bank_zero
+    self.bank = 0
+  end
+
+  def card_zero
+    @gambler.stop_layout
+    @casino.stop_layout
+  end  
+
+  def pick_up_money_tie(money)
+    @gambler.get_money(money)
+    @casino.get_money(money)
+  end  
+
+  def know_balance
+    puts "Баланс игрока -  #{@gambler.balance}"
+    puts "Деньги крупье - #{@casino.balance}"      
+  end
+
+  def info
+    if @game_end
+      @casino.show_cardface
+      show_score(@casino.name, @result.score(@casino.cards))
+    else
+      @casino.show_cardback
+    end  
+    @gambler.show_cardface
+    show_score(@gambler.name, @result.score(@gambler.cards))
+  end
+
+  def victory
+    player = @result.score(@casino.cards)
+    diler = @result.score(@gambler.cards)
+    if tie?(player, diler)
+      tie
+      pick_up_money_tie(@bank / 2)
+    elsif player_win?(player, diler)  
+      @gambler.user_win(@bank)
+    else
+      @casino.user_win(@bank) 
+    end   
+  end
 end
