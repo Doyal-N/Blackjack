@@ -23,5 +23,4 @@ class Diler < User
   def take_card?(score)
     score < PASS && !@take_a_card
   end
-
 end

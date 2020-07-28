@@ -53,5 +53,4 @@ module GameInterface
     puts "Введите 'с' для старта"
     puts "Введите 'выход' для выхода."
   end  
-
 end

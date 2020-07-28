@@ -12,5 +12,4 @@ class Hand
   def deal_card
     deal_cards(1)
   end  
-
 end

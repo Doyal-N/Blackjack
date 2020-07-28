@@ -52,5 +52,4 @@ class Result < Hand
   def score_difference(score)
     (WIN - score).abs
   end
-  
 end  
