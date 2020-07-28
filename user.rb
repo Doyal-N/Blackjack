@@ -20,18 +20,18 @@ class User
   end
 
   def miss_a_turn
-    puts "#{@name} пропускает ход"
+    GameMessages.message("#{@name} пропускает ход")
     self.pass = true
   end
 
   def taken_card(card)
-    puts "#{@name} взял карту"
+    GameMessages.message("#{@name} взял карту")
     take_card(card)
     self.take_a_card = true
   end
 
   def open_cards
-    puts "Открываем карты"
+    GameMessages.message('Открываем карты')
     self.open_the_cards = true
   end
 
@@ -45,12 +45,12 @@ class User
 
   def user_win(bank)
     get_money(bank)
-    puts "#{@name} победил"
+    GameMessages.message("#{@name} победил")
   end  
 
   def show_cardback
     @cards.each { print('  ', '†') }
-    puts 'Карты скрыты'
+    GameMessages.message('Карты скрыты')
   end
 
   def show_cardface 
