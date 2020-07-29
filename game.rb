@@ -6,7 +6,7 @@ class Game
     @game.hi_player(@gambler.name)
     @casino = Diler.new
     @game.start_game_info
-    while choice == @game.get_user_data
+    while choice = @game.get_user_data
       play(choice)
     end
   end
