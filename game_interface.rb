@@ -6,7 +6,7 @@ class GameInterface
 
   def get_name
     puts 'Введите имя '
-    name = get_user_data
+    get_user_data
   end
 
   def user_choice(user)
@@ -23,7 +23,7 @@ class GameInterface
     puts "Введите 'о' - открыть карты."
     puts "Введите 'выход' для выхода."
   end
-  
+
   def hi_player(name)
     frame("Привет, #{name}. Начнем игру!")
   end
@@ -38,8 +38,8 @@ class GameInterface
 
   def hello
     frame('Приветсвуем в казино!')
-  end  
-  
+  end
+
   def tie
     message('Ничья')
   end
@@ -52,20 +52,20 @@ class GameInterface
   def start_game_info
     puts "Введите 'с' для старта"
     puts "Введите 'выход' для выхода."
-  end  
+  end
 
   def message(text)
     puts
     puts text
     puts
-  end 
-  
+  end
+
   def frame(text)
     size = text.size + 6
     elem = '*' * size
     puts
     puts elem
     puts "+ #{text} +"
-    puts 
+    puts
   end
 end

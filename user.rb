@@ -1,5 +1,4 @@
 class User
-
   START_BANK = 100
   BET = 10
   MAX_CARD = 3
@@ -49,7 +48,7 @@ class User
   def user_win(bank)
     get_money(bank)
     @game.frame("#{@name} победил")
-  end  
+  end
 
   def show_cardback
     puts
@@ -57,27 +56,26 @@ class User
     puts
   end
 
-  def show_cardface 
+  def show_cardface
     puts
     @cards.each { |card| print('  ', "#{card.sign}#{card.suit}") }
     puts
-  end   
+  end
 
   def stop_layout
     @cards = []
     @take_a_card = false
     @pass = false
     @open_the_cards = false
-  end  
+  end
 
-  #методы-предикаты
-  def card_count? 
+  def card_count?
     @cards.length == MAX_CARD
-  end  
+  end
 
   def take_cards?
     @cards.length < MAX_CARD
-  end  
+  end
 
   def open_cards?(user_choice)
     user_choice == 'о'

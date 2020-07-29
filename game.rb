@@ -1,5 +1,4 @@
 class Game
-  
   def initialize
     @game = GameInterface.new
     @game.hello
@@ -7,8 +6,8 @@ class Game
     @game.hi_player(@gambler.name)
     @casino = Diler.new
     @game.start_game_info
-    while choice = @game.get_user_data
-      play(choice)      
+    while choice == @game.get_user_data
+      play(choice)
     end
   end
 
@@ -19,11 +18,11 @@ class Game
       start
     elsif choice == 'выход'
       exit
-    else 
-      @game.message('Введите корректный выбор')    
-    end  
+    else
+      @game.message('Введите корректный выбор')
+    end
   end
-  
+
   def start
     @game.choice_new_game
     @bank = 0
@@ -31,12 +30,12 @@ class Game
     @result = Result.new
     place_bets
     hand_card
-    process 
+    process
     husking
-  end  
+  end
 
   def place_bets
-    self.bank += @gambler.place_bet 
+    self.bank += @gambler.place_bet
     self.bank += @casino.place_bet
   end
 
@@ -49,8 +48,8 @@ class Game
     info
     @gambler.game_options(@game.user_choice(@gambler), @result)
     self.game_end = @gambler.open_the_cards
-  end 
-  
+  end
+
   def casino_move
     @casino.game_options(@result)
     self.game_end = @casino.open_the_cards
@@ -60,6 +59,7 @@ class Game
     until @game_end
       player_turn
       break if @game_end || cards_none?
+
       casino_move
       stop_play if cards_none?
     end
@@ -75,7 +75,7 @@ class Game
     self.game_end = true
     exit if impossible_game?
     @game.start_game_info
-  end  
+  end
 
   def stop_play
     info
@@ -84,11 +84,11 @@ class Game
 
   def impossible_game?
     @gambler.balance.zero? || @casino.balance.zero?
-  end  
+  end
 
   def cards_none?
     @gambler.card_count? && @casino.card_count?
-  end   
+  end
 
   def bank_zero
     self.bank = 0
@@ -97,12 +97,12 @@ class Game
   def card_zero
     @gambler.stop_layout
     @casino.stop_layout
-  end  
+  end
 
   def pick_up_money_tie(money)
     @gambler.get_money(money)
     @casino.get_money(money)
-  end  
+  end
 
   def know_balance
     @game.frame("--- БАНК ---\nБаланс игрока -  #{@gambler.balance}\nДеньги крупье - #{@casino.balance}")
@@ -114,7 +114,7 @@ class Game
       @game.show_score(@casino.name, @result.score(@casino.cards))
     else
       @casino.show_cardback
-    end  
+    end
     @gambler.show_cardface
     @game.show_score(@gambler.name, @result.score(@gambler.cards))
   end
@@ -125,10 +125,10 @@ class Game
     if @result.tie?(player, diler)
       @game.tie
       pick_up_money_tie(@bank / 2)
-    elsif @result.player_win?(player, diler)  
+    elsif @result.player_win?(player, diler)
       @gambler.user_win(@bank)
     else
-      @casino.user_win(@bank) 
-    end   
+      @casino.user_win(@bank)
+    end
   end
 end

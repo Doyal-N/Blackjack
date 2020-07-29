@@ -1,8 +1,7 @@
 class Hand
-   
   def initialize
     shoe = Shoe.new
-    @cards = shoe.cards    
+    @cards = shoe.cards
   end
 
   def deal_cards(amount = 2)
@@ -11,5 +10,5 @@ class Hand
 
   def deal_card
     deal_cards(1)
-  end  
+  end
 end

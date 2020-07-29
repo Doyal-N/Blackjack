@@ -1,5 +1,4 @@
 class Player < User
-
   def game_options(user_choice, result)
     if can_pass?(user_choice)
       miss_a_turn
@@ -8,12 +7,12 @@ class Player < User
     elsif open_cards?(user_choice)
       open_cards
     end
-  end  
-  
+  end
+
   def can_pass?(user_choice)
     user_choice == 'п' && !@pass
-  end  
-  
+  end
+
   def take_card?(user_choice)
     user_choice == 'в' && !@take_a_card
   end

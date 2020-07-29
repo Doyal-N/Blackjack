@@ -1,14 +1,13 @@
 class Result < Hand
-
   WIN = 21
   BASIC = 10
-  ACE_CARD = 'A'
-  JQK = ['J', 'Q', 'K'] 
+  ACE_CARD = 'A'.freeze
+  JQK = %w[J Q K].freeze
   ACE = 1
   ACE_2 = 11
 
   def score(cards)
-    total= 0
+    total = 0
     num = 0
     cards.each do |card|
       num += ACE if card.sign == ACE_CARD
@@ -54,4 +53,4 @@ class Result < Hand
   def score_difference(score)
     (WIN - score).abs
   end
-end  
+end
