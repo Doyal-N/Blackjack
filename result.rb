@@ -2,6 +2,8 @@ class Result < Hand
 
   WIN = 21
   BASIC = 10
+  ACE_CARD = 'A'
+  JQK = ['J', 'Q', 'K'] 
   ACE = 1
   ACE_2 = 11
 
@@ -9,16 +11,16 @@ class Result < Hand
     total= 0
     num = 0
     cards.each do |card|
-      num += ACE if card.sign == 'A'
+      num += ACE if card.sign == ACE_CARD
       total += get_basic_score(card)
     end
     add_ace(total, num)
   end
 
   def get_basic_score(card)
-    if ['J', 'Q', 'K'].include? card.sign
+    if JQK.include? card.sign
       BASIC
-    elsif card.sign == 'A'
+    elsif card.sign == ACE_CARD
       ACE
     else
       card.sign.to_i

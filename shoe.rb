@@ -3,7 +3,7 @@ class Shoe
   attr_reader :cards
 
   def initialize
-    deck = DeckOfCards.new
+    deck = Deck.new
     @deck = deck.deck
     @cards = mix_cards
   end    
