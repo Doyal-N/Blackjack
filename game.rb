@@ -1,13 +1,13 @@
 class Game
-  include GameInterface 
-
+  
   def initialize
-    hello
-    @gambler = Player.new(get_name)
-    hi_player(@gambler.name)
+    @game = GameInterface.new
+    @game.hello
+    @gambler = Player.new(@game.get_name)
+    @game.hi_player(@gambler.name)
     @casino = Diler.new
-    start_game_info
-    while choice = get_user_data
+    @game.start_game_info
+    while choice = @game.get_user_data
       play(choice)      
     end
   end
@@ -20,12 +20,12 @@ class Game
     elsif choice == 'выход'
       exit
     else 
-      puts 'Введите корректный выбор'    
+      @game.message('Введите корректный выбор')    
     end  
   end
   
   def start
-    choice_new_game
+    @game.choice_new_game
     @bank = 0
     @game_end = false
     @result = Result.new
@@ -47,7 +47,7 @@ class Game
 
   def player_turn
     info
-    @gambler.game_options(user_choice(@gambler), @result)
+    @gambler.game_options(@game.user_choice(@gambler), @result)
     self.game_end = @gambler.open_the_cards
   end 
   
@@ -66,7 +66,7 @@ class Game
   end
 
   def husking
-    choice_open_cards
+    @game.choice_open_cards
     info
     victory
     bank_zero
@@ -74,7 +74,7 @@ class Game
     know_balance
     self.game_end = true
     exit if impossible_game?
-    start_game_info
+    @game.start_game_info
   end  
 
   def stop_play
@@ -105,28 +105,25 @@ class Game
   end  
 
   def know_balance
-    GameMessages.frame('БАНК')
-    puts "Баланс игрока -  #{@gambler.balance}"
-    puts "Деньги крупье - #{@casino.balance}"     
-    puts
+    @game.frame("--- БАНК ---\nБаланс игрока -  #{@gambler.balance}\nДеньги крупье - #{@casino.balance}")
   end
 
   def info
     if @game_end
       @casino.show_cardface
-      show_score(@casino.name, @result.score(@casino.cards))
+      @game.show_score(@casino.name, @result.score(@casino.cards))
     else
       @casino.show_cardback
     end  
     @gambler.show_cardface
-    show_score(@gambler.name, @result.score(@gambler.cards))
+    @game.show_score(@gambler.name, @result.score(@gambler.cards))
   end
 
   def victory
     player = @result.score(@gambler.cards)
     diler = @result.score(@casino.cards)
     if @result.tie?(player, diler)
-      tie
+      @game.tie
       pick_up_money_tie(@bank / 2)
     elsif @result.player_win?(player, diler)  
       @gambler.user_win(@bank)

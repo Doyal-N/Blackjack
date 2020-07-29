@@ -11,6 +11,7 @@ class User
     @name = name
     @balance = START_BANK
     @cards = []
+    @game = GameInterface.new
     @take_a_card = false
     @pass = false
     @open_the_cards = false
@@ -22,18 +23,18 @@ class User
   end
 
   def miss_a_turn
-    GameMessages.message('Игрок пропускает ход')
+    @game.message('Игрок пропускает ход')
     self.pass = true
   end
 
   def taken_card(card)
-    GameMessages.message('Игрок взял карту')
+    @game.message('Игрок взял карту')
     take_card(card)
     self.take_a_card = true
   end
 
   def open_cards
-    GameMessages.message('Открываем карты')
+    @game.message('Открываем карты')
     self.open_the_cards = true
   end
 
@@ -47,7 +48,7 @@ class User
 
   def user_win(bank)
     get_money(bank)
-    GameMessages.frame("#{@name} победил")
+    @game.frame("#{@name} победил")
   end  
 
   def show_cardback

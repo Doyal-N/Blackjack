@@ -1,4 +1,4 @@
-module GameInterface
+class GameInterface
   def get_user_data
     STDOUT.write 'Ваш текст >>> '
     gets.strip
@@ -25,23 +25,23 @@ module GameInterface
   end
   
   def hi_player(name)
-    GameMessages.frame("Привет, #{name}. Начнем игру!")
+    frame("Привет, #{name}. Начнем игру!")
   end
 
   def choice_open_cards
-    GameMessages.message('Открываем...')
+    message('Открываем...')
   end
 
   def choice_new_game
-    GameMessages.frame('Новая игра...')
+    frame('Новая игра...')
   end
 
   def hello
-    GameMessages.frame('Приветсвуем в казино!')
+    frame('Приветсвуем в казино!')
   end  
   
   def tie
-    GameMessages.message('Ничья')
+    message('Ничья')
   end
 
   def show_score(name, score)
@@ -53,4 +53,19 @@ module GameInterface
     puts "Введите 'с' для старта"
     puts "Введите 'выход' для выхода."
   end  
+
+  def message(text)
+    puts
+    puts text
+    puts
+  end 
+  
+  def frame(text)
+    size = text.size + 6
+    elem = '*' * size
+    puts
+    puts elem
+    puts "+ #{text} +"
+    puts 
+  end
 end
