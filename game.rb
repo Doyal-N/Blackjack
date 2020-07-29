@@ -14,6 +14,7 @@ class Game
   attr_accessor :bank, :game_end
 
   def play(choice)
+    @game.margin
     if choice == 'с'
       start
     elsif choice == 'выход'

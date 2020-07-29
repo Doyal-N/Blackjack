@@ -17,6 +17,7 @@ class GameInterface
   end
 
   def ask_user(user)
+    margin
     puts 'Что вы хотите?'
     puts "Введите 'п' - пропустить ход." unless user.pass
     puts "Введите 'в' - взять карту." unless user.take_a_card
@@ -68,4 +69,8 @@ class GameInterface
     puts "+ #{text} +"
     puts
   end
+
+  def margin
+    puts
+  end  
 end
